@@ -6,13 +6,13 @@ Simple HTML DOM parser benchmark.
 Competitors
 -----------
 
-=== Erlang
+### Erlang
 
 * Mochiweb html parser.
   https://github.com/mochi/mochiweb/blob/master/src/mochiweb_html.erl
   The only real-world HTML parser for Erlang. Written on pure Erlang.
 
-=== CPython
+### CPython
 
 * lxml.etree.HTML
   http://lxml.de/
@@ -27,7 +27,7 @@ Competitors
   http://code.google.com/p/html5lib/
   Pure python DOM parser oriented to HTML5.
 
-=== PyPi
+### PyPi
 
 * BeautifulSoup 3
 * BeautifulSoup 4
