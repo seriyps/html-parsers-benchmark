@@ -68,3 +68,35 @@ or smth like
 
     ./run.sh 2>&1 | tee output.txt
     ./to_csv.py < output.txt
+
+
+How to add my %platformname% to benchmark set?
+----------------------------------------------
+
+Create directory %platformname%
+
+    mkdir %platformname%
+
+Create `run.sh` and `prepare.sh` scripts:
+
+* `run.sh` - called every time when benchmark starts. Must use `print_header()`
+  and `timeit()` functions from `lib.sh` to format output for each test.
+  It must accept 2 arguments: HTML file path and number of iterations and pass
+  them unchanged to benchmark scripts.
+* `prepare.sh` - called only once, before runing any benchmarks. It can download
+  dependencies, compile sources etc.
+
+Create your benchmark scripts. Requirements:
+
+* Must accept 2 arguments: path to HTML file and number of iterations
+* Must read HTML file once, then perform "number of iterations" parse cycles
+* Must print parser-loop runtime in seconds, calculated like
+  `start = time(); do_n_iterations(N); print time() - start`
+* On each iteration must build full DOM tree in memory
+
+Add %platformname% to top `run.sh` to `tests` variable.
+
+How to add new HTML to benchmark?
+---------------------------------
+
+Just create HTML file named `page_<some_page_name>.html`.

@@ -9,7 +9,9 @@ if [ ! $1 ]; then
     help_and_exit
 fi
 
+# add your platform there:
 tests="erlang python pypy"
+
 testfiles=`ls page_*.html`
 num_iterations=$1
 
