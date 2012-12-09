@@ -33,18 +33,26 @@ Competitors
 * BeautifulSoup 4
 * html5lib
 
+### C
+
+* libxml2
+  http://xmlsoft.org/html/libxml-HTMLparser.html
+  Written on C non-strict HTML parser.
+
 Preparation
 -----------
 
-Install python-virtualenv, python-lxml (or it can be installed via pip), erlang, pypy
+Install OS dependencies python-virtualenv, erlang, pypy, C compiler and libxml2
+dev packages
 
-    sudo apt-get install python-virtualenv python-lxml erlang-base pypy
+    sudo apt-get install python-virtualenv python-lxml erlang-base pypy \
+        libxml2-dev libxslt1-dev build-essential
 
 Then run (it will prepare virtual environments, fetch dependencies, compile erlang code etc)
 
     ./prepare.sh
 
-In case of errors, I recommended to install `libxml2-dev` and `libxslt1-dev` and retry. 
+In case of errors, I recommended to install also `cython`, `python-dev` and retry. 
 
 RUN
 ---
