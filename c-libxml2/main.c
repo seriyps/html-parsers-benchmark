@@ -78,4 +78,5 @@ int main(int argc, char *argv[]) {
     runtime_us = time_us() - start;
     runtime_s = runtime_us / 1000000.0;
     printf("%Lf s\n", runtime_s);
+    return 0;
 }
