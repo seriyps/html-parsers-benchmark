@@ -1,7 +1,7 @@
+#!/bin/bash
+source ./lib.sh
 
-tests="erlang python pypy"
-
-for tst in $tests; do
+for tst in $PLATFORMS; do
     cd $tst
     ./prepare.sh
     cd ../

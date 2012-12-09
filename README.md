@@ -65,6 +65,10 @@ eg
 
     ./run.sh 5000
 
+To run tests only for some of the platforms, define PLATFORMS envifonment variable.
+
+    PLATFORMS="pypy python" ./run.sh 5000
+
 Results
 -------
 
@@ -102,7 +106,7 @@ Create your benchmark scripts. Requirements:
   `start = time(); do_n_iterations(N); print time() - start`
 * On each iteration must build full DOM tree in memory
 
-Add %platformname% to top `run.sh` to `tests` variable.
+Add %platformname% to `platforms.txt` file.
 
 How to add new HTML to benchmark?
 ---------------------------------

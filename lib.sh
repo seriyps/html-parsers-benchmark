@@ -11,3 +11,7 @@ print_header() {
     echo "******************************"
     echo "parser:$parser	file:$test_file"
 }
+
+if [ -z "$PLATFORMS" ]; then
+    PLATFORMS=`cat platforms.txt`
+fi
