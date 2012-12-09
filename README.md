@@ -52,7 +52,11 @@ Then run (it will prepare virtual environments, fetch dependencies, compile erla
 
     ./prepare.sh
 
-In case of errors, I recommended to install also `cython`, `python-dev` and retry. 
+In case of errors, I recommended to install also `cython`, `python-dev` and retry.
+
+To prepare only some of the platforms, define PLATFORMS environment variable:
+
+    PLATFORMS="pypy python" ./prepare.sh
 
 RUN
 ---
@@ -65,7 +69,7 @@ eg
 
     ./run.sh 5000
 
-To run tests only for some of the platforms, define PLATFORMS envifonment variable.
+To run tests only for some of the platforms, define PLATFORMS envifonment variable:
 
     PLATFORMS="pypy python" ./run.sh 5000
 
