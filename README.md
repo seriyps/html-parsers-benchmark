@@ -85,6 +85,7 @@ or smth like
     ./run.sh 2>&1 | tee output.txt
     ./to_csv.py < output.txt
 
+There is also R - script that can build some pretty graphs: `stats/main.r`.
 
 How to add my %platformname% to benchmark set?
 ----------------------------------------------

@@ -1,3 +1,7 @@
+/**
+ * Created on 2012-12-09
+ * @author: Sergey Prokhorov <me@seriyps.ru>
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
