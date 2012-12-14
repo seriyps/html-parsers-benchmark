@@ -25,7 +25,7 @@ merge.loops.file <- function(n, to=FALSE) {
   data
 }
 
-runs = c(10, 100, 1000)
+runs = c(10, 50, 100, 400, 600, 1000)
 
 res = FALSE
 for (run in runs) {
@@ -82,13 +82,21 @@ bench.plot.secondsBox <- function(data, page) {
   print(g)
 }
 
+bench.plot.memoryBox <- function(data, page) {
+  g <- (ggplot(data, aes(pp, maximum.RSS))
+        + geom_boxplot()
+        + ylab(paste("Average memory usage for page", page, "(kb)"))
+        + boxOptions)
+  print(g)
+}
+
 png(width=800, height=600)
 
 lapply(attr(res$file, "levels"), function(page) {
   bench.plot.secondsPerLoop(subset(res, file==page), page)
 })
 
-data = res ## subset(res, !((platform=="pypy") & ((parser=="bsoup4_parser.py") | (parser=="html5lib_parser.py"))))
+data = subset(res, !((platform=="pypy") & ((parser=="bsoup4_parser.py") | (parser=="html5lib_parser.py"))))
 lapply(attr(data$file, "levels"), function(page) {
   bench.plot.memoryVsIterations(subset(data, file==page), page)
 })
@@ -97,6 +105,10 @@ lapply(attr(res$file, "levels"), function(page) {
   print(page)
   bench.plot.secondsBox(subset(res, file==page), page)
   print(page)
+})
+
+lapply(attr(data$file, "levels"), function(page) {
+  bench.plot.memoryBox(subset(data, file==page), page)
 })
 
 dev.off()

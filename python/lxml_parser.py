@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+'''
+Created on 2012-12-03
+
+@author: Sergey <me@seriyps.ru>
+'''
 from lxml import etree
 import time
 import sys
