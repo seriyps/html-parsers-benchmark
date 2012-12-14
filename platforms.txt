@@ -2,3 +2,4 @@ python
 erlang
 pypy
 c-libxml2
+nodejs

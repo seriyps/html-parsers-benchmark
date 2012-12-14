@@ -33,6 +33,18 @@ Competitors
 * BeautifulSoup 4
 * html5lib
 
+### Node.JS
+
+* cheerio
+  https://npmjs.org/package/cheerio
+  Pure JS HTML DOM parser with jQuery API
+* htmlparser
+  https://npmjs.org/package/htmlparser
+  Pure JS HTML DOM parser
+* jsdom
+  https://npmjs.org/package/jsdom
+  Pure JS HTML DOM parser with rich browser-like API
+
 ### C
 
 * libxml2
@@ -46,9 +58,9 @@ Install OS dependencies python-virtualenv, erlang, pypy, C compiler and libxml2
 dev packages
 
     sudo apt-get install python-virtualenv python-lxml erlang-base pypy \
-        libxml2-dev libxslt1-dev build-essential
+        libxml2-dev libxslt1-dev build-essential, nodejs, npm
 
-Then run (it will prepare virtual environments, fetch dependencies, compile erlang code etc)
+Then run (it will prepare virtual environments, fetch dependencies, compile sources etc)
 
     ./prepare.sh
 
