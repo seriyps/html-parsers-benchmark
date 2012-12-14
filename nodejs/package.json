@@ -1,0 +1,5 @@
+{ "name": "html-parser-bench",
+  "version": "0.0.1",
+  "dependencies": {"htmlparser": "1.7.6",
+                   "jsdom": "0.3.1",
+                   "cheerio": "0.10.3"}}
