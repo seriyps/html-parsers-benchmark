@@ -11,10 +11,14 @@ var fs = require('fs');
 
     var start = new Date();
     for (var i=0; i < n; i++) {
-        var tree = jsdom(html);
+        var tree = jsdom(html,
+                        null,
+                        {features: {
+                            FetchExternalResources: false,
+                            ProcessExternalResources: false
+                        }});
     }
     var end = new Date();
 
     console.log('%d s', (end - start) / 1000);
 })()
-
