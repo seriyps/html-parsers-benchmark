@@ -16,7 +16,7 @@ require(ggplot2)
 
 ## merge all files, add "loops" column
 ## TODO: looks ugly. Maybe do this in bash/python???
-merge.loops.file <- function(n, to=FALSE) {
+MergeLoopsFile <- function(n, to=FALSE) {
   filename = paste("../results-", n, ".csv", sep="")
   data = read.csv(filename)
   data$loops <- n
@@ -29,7 +29,7 @@ runs = c(10, 50, 100, 400, 600, 1000)
 
 res = FALSE
 for (run in runs) {
-  res <- merge.loops.file(run, res)
+  res <- MergeLoopsFile(run, res)
 }
 
 ## add column with file sizes
@@ -38,8 +38,12 @@ pages$name <- attr(pages, "row.names")
 pages <- transform(pages, file = sub("../", "", name))
 res <- merge(res, pages[c("size", "file")], by = "file")
 
+## add start-up overhead column
+res <- transform(res, overhead=real.s - parser.s)
+
 ## add "pp" column (platform + parser) with concatenated platform and parser
 res <- transform(res, pp = paste(platform, "/", parser))
+res <- res[order(res$pp),]
 
 ## So, now we have data.frame like
 ##
@@ -50,66 +54,88 @@ res <- transform(res, pp = paste(platform, "/", parser))
 
 ## plots
 
-histOptions <- opts(axis.text.x = theme_text(angle = 330))
-boxOptions <- opts(axis.text.x = theme_text(angle = -50, hjust=0, vjust=1))
+base_size <- 15
 
-bench.plot.secondsPerLoop <- function(data, page) {
+options.hist <- opts(axis.text.x = theme_text(angle = 330, size = base_size),
+                     axis.text.y = theme_text(size = base_size),
+                     strip.text.x = theme_text(size = base_size))
+options.box <- opts(axis.text.x = theme_text(angle = -50, hjust=0, vjust=1, size = base_size),
+                    axis.text.y = theme_text(size = base_size),
+                    strip.text.x = theme_text(size = base_size * 1.2))
+
+bench.plot.SecondsPerLoop <- function(data, page) {
   g <- (ggplot(transform(data, spl = parser.s/loops),
                aes(loops, spl))
         + geom_histogram(stat = "identity")
         + ylab(paste("Seconds per loop for page", page))
-        ## + ylab("Seconds / loop")
         ## + ggtitle(paste("Seconds per loop for page", page))
         + facet_wrap(~ pp, nrow=2)
-        + histOptions)
+        + options.hist)
   print(g)
 }
 
-bench.plot.memoryVsIterations <- function(data, page) {
+bench.plot.MemoryVsIterations <- function(data, page) {
   g <- (ggplot(data, aes(loops, maximum.RSS))
         + geom_histogram(stat = "identity")
+        ## + scale_y_log10()
         + ylab(paste("Memory for page", page, "(kb)"))
         + facet_wrap(~ pp, nrow=2)
-        + histOptions)
+        + options.hist)
   print(g)
 }
 
-bench.plot.secondsBox <- function(data, page) {
+bench.plot.SecondsBox <- function(data, page) {
   g <- (ggplot(transform(data, spl=parser.s/loops), aes(pp, spl))
         + geom_boxplot()
         + ylab(paste("Average seconds per loop for page", page))
-        + boxOptions)
+        + options.box)
   print(g)
 }
 
-bench.plot.memoryBox <- function(data, page) {
+bench.plot.MemoryBox <- function(data, page) {
   g <- (ggplot(data, aes(pp, maximum.RSS))
         + geom_boxplot()
+        ## + scale_y_log10()
         + ylab(paste("Average memory usage for page", page, "(kb)"))
-        + boxOptions)
+        + options.box)
   print(g)
 }
 
-png(width=800, height=600)
+bench.plot.OverheadBox <- function(data, percentile) {
+  g <- (ggplot(data, aes(pp, overhead))
+        + geom_boxplot()
+        + ylim(0, quantile(data$overhead, percentile))
+        + options.box)
+  print(g)
+}
 
-lapply(attr(res$file, "levels"), function(page) {
-  bench.plot.secondsPerLoop(subset(res, file==page), page)
+## png(filename="html_parser_bench_pre-%03d.png", width=500, height=350)
+png(filename="html_parser_bench-%03d.png", width=1280, height=960)
+
+speeddata = res ## subset(res, !(platform=="pypy")) ## subset(res, !((platform=="pypy") & ((parser=="bsoup4_parser.py") | (parser=="html5lib_parser.py"))))
+lapply(attr(speeddata$file, "levels"), function(page) {
+  bench.plot.SecondsPerLoop(subset(speeddata, file==page), page)
 })
 
-data = subset(res, !((platform=="pypy") & ((parser=="bsoup4_parser.py") | (parser=="html5lib_parser.py"))))
-lapply(attr(data$file, "levels"), function(page) {
-  bench.plot.memoryVsIterations(subset(data, file==page), page)
-})
-
-lapply(attr(res$file, "levels"), function(page) {
+lapply(attr(speeddata$file, "levels"), function(page) {
   print(page)
-  bench.plot.secondsBox(subset(res, file==page), page)
+  bench.plot.SecondsBox(subset(speeddata, file==page), page)
   print(page)
 })
 
-lapply(attr(data$file, "levels"), function(page) {
-  bench.plot.memoryBox(subset(data, file==page), page)
+memdata = res ## subset(res, !(
+  ## ((platform=="pypy") & ((parser=="bsoup4_parser.py") | (parser=="html5lib_parser.py")))
+  ## | (parser=="jsdom_parser.js")
+  ## ))
+lapply(attr(memdata$file, "levels"), function(page) {
+  bench.plot.MemoryVsIterations(subset(memdata, file==page), page)
 })
+
+lapply(attr(memdata$file, "levels"), function(page) {
+  bench.plot.MemoryBox(subset(memdata, file==page), page)
+})
+
+bench.plot.OverheadBox(res, 0.98)
 
 dev.off()
 
