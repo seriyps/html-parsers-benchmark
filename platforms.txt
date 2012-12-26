@@ -4,3 +4,4 @@ pypy
 c-libxml2
 nodejs
 ruby
+java

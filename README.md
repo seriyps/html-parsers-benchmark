@@ -57,6 +57,10 @@ Competitors
   http://xmlsoft.org/html/libxml-HTMLparser.html
   Written on C non-strict HTML parser.
 
+### Java
+
+* JSoup http://jsoup.org/
+
 Preparation
 -----------
 
