@@ -45,6 +45,12 @@ Competitors
   https://npmjs.org/package/jsdom
   Pure JS HTML DOM parser with rich browser-like API
 
+### Ruby
+
+* nokogiri
+  http://nokogiri.org/
+  HTML/XML parser based on libxml2
+
 ### C
 
 * libxml2
