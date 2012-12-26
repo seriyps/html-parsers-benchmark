@@ -51,6 +51,15 @@ Competitors
   http://xmlsoft.org/html/libxml-HTMLparser.html
   Written on C non-strict HTML parser.
 
+### Google Go
+
+* gokogiri
+  https://github.com/moovweb/gokogiri
+* go-html-transform
+  https://code.google.com/p/go-html-transform
+* exp/html
+  http://tip.golang.org/pkg/exp/html
+
 Preparation
 -----------
 
