@@ -21,15 +21,13 @@ if ( !ctype_digit( $count ) )
     exit;
 }
 
-$time_start = time();
+$time_start = microtime( true );
 run_loop( $html, $count );
-$loop_time = time() - $time_start;
+$loop_time = time( true ) - $time_start;
 echo "$loop_time\n";
 
 function run_loop( $aHtml, $aCount )
 {
-    
-    
     for ( $i = 0; $i < $aCount; $i++ )
     {
         $tidy = new tidy();
