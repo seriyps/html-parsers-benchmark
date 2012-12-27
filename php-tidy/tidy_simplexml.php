@@ -23,7 +23,7 @@ if ( !ctype_digit( $count ) )
 
 $time_start = microtime( true );
 run_loop( $html, $count );
-$loop_time = time( true ) - $time_start;
+$loop_time = microtime( true ) - $time_start;
 echo "$loop_time\n";
 
 function run_loop( $aHtml, $aCount )
