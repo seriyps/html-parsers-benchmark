@@ -26,7 +26,7 @@ import sys
 import csv
 import re
 
-l1_re = re.compile(r"^parser:([0-9a-z_.-]+)\tfile:(.*)")
+l1_re = re.compile(r"^parser:([0-9a-zA-Z_.-]+)\tfile:(.*)")
 
 
 def parse_line1(line):
