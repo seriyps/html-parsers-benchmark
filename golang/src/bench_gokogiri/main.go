@@ -32,6 +32,7 @@ func main() {
 			panic(err)
 		}
 		doc.Root()
+		doc.Free()
 	}
 	end := time.Now()
 
