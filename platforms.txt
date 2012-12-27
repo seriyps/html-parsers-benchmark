@@ -6,3 +6,4 @@ nodejs
 ruby
 golang
 php-tidy
+haskell

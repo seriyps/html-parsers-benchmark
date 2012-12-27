@@ -66,6 +66,11 @@ Competitors
 * exp/html
   http://tip.golang.org/pkg/exp/html
 
+### Haskell
+
+* fast-tagsoup
+  http://hackage.haskell.org/package/fast-tagsoup
+
 Preparation
 -----------
 
@@ -73,7 +78,7 @@ Install OS dependencies python-virtualenv, erlang, pypy, C compiler and libxml2
 dev packages
 
     sudo apt-get install python-virtualenv python-lxml erlang-base pypy \
-        libxml2-dev libxslt1-dev build-essential, nodejs, npm
+        libxml2-dev libxslt1-dev build-essential nodejs npm cabal-install libicu-dev
 
 Then run (it will prepare virtual environments, fetch dependencies, compile sources etc)
 
