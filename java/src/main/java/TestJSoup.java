@@ -10,9 +10,9 @@ import java.io.IOException;
  */
 public class TestJSoup {
     public static void main(String[] args) throws IOException {
-        long time = System.currentTimeMillis();
         File file = new File(args[0]);
         int iterations = Integer.parseInt(args[1]);
+        long time = System.currentTimeMillis();
         for (int i = 0; i < iterations; i++) {
             Document document = Jsoup.parse(file, "utf-8");
         }
