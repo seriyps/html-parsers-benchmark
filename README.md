@@ -66,6 +66,12 @@ Competitors
 * exp/html
   http://tip.golang.org/pkg/exp/html
 
+### PHP
+
+* tidy + simplexml
+  http://php.net/manual/ru/book.tidy.php http://php.net/manual/ru/book.simplexml.php
+  Tidy - PHP extension for repearing broken HTML, simplexml - built-in libxml2 binding
+
 ### Haskell
 
 * fast-tagsoup
@@ -78,7 +84,8 @@ Install OS dependencies python-virtualenv, erlang, pypy, C compiler and libxml2
 dev packages
 
     sudo apt-get install python-virtualenv python-lxml erlang-base pypy \
-        libxml2-dev libxslt1-dev build-essential nodejs npm cabal-install libicu-dev
+        libxml2-dev libxslt1-dev build-essential nodejs npm cabal-install libicu-dev \
+        php5-cli php5-tidy golang ruby1.9.1 ruby1.9.1-dev rubygems1.9.1
 
 Then run (it will prepare virtual environments, fetch dependencies, compile sources etc)
 
