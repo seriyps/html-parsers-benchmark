@@ -1,0 +1,24 @@
+Name:               html-parser-benchmark
+Version:            0.0.0
+Synopsis:           HTML parser benchmark
+License:            MIT
+Author:             Fedor Gogolev <knsd@knsd.net>
+Maintainer:         knsd@knsd.net
+Category:           Benchmark
+Build-type:         Simple
+Cabal-version:      >= 1.12
+Tested-with:        GHC == 7.6.*
+
+Executable fast-tagsoup
+  Main-is:          FastTagsoup.hs
+  Hs-source-dirs:   bin
+  Ghc-options:      -Wall -O2 -fno-warn-orphans
+  Default-language: Haskell2010
+  Build-depends:    base
+                  , bytestring
+                  , time
+                  , deepseq
+                  , safe
+                  , optparse-applicative
+                  , tagsoup
+                  , fast-tagsoup
