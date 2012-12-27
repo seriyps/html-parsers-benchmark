@@ -10,7 +10,8 @@ main([FileName, N]) when is_list(N) ->
     main([FileName, list_to_integer(N)]);
 main([FileName, N]) ->
     {ok, Content} = file:read_file(FileName),
-    do_parse_test(Content, N).
+    Result = do_parse_test(Content, N),
+    io:format("~p s~n", [Result / 1000000]).
     %% fprof:apply(fun() -> do_parse_test(Content, N) end, []),
     %% io:format("profile.."),
     %% fprof:profile(),
@@ -19,10 +20,8 @@ main([FileName, N]) ->
 
 
 do_parse_test(Html, N) ->
-    Start = erlang:now(),
-    loop(Html, N),
-    Stop = erlang:now(),
-    io:format("~p s~n", [timer:now_diff(Stop, Start) / 1000000]).
+    {Microseconds, _ReturnValue} = timer:tc(fun loop/2, [Html, N]),
+    Microseconds.
 
 loop(_Html, 0) ->
     ok;
