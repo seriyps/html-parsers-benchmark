@@ -5,3 +5,4 @@ c-libxml2
 nodejs
 ruby
 golang
+php-tidy
