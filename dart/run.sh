@@ -1,6 +1,8 @@
 #!/bin/bash
 source ../lib.sh
 
+export PATH=$PATH:"dart-sdk/bin"
+
 cd bin
 parsers=`ls *_parser.dart`
 cd ..
