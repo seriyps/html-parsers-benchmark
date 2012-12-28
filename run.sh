@@ -14,13 +14,17 @@ testfiles=`ls page_*.html`
 num_iterations=$1
 
 for tst in $PLATFORMS; do
-    echo "==============="
-    echo $tst;
-    echo "==============="
+    if [ -d $tst ]; then
+        echo "==============="
+        echo $tst;
+        echo "==============="
 
-    cd $tst
-    for testfile in $testfiles; do
-        ./run.sh "../$testfile" $num_iterations
-    done
-    cd ../
+        cd $tst
+        # can use GNU parallel for parallel (by HTML page) test execution
+        # echo "$testfiles" | parallel --gnu -k -j 6 "./run.sh ../{} $num_iterations"
+        for testfile in $testfiles; do
+            ./run.sh "../$testfile" $num_iterations
+        done
+        cd ../
+    fi
 done

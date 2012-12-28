@@ -81,6 +81,12 @@ Competitors
 
 * JSoup http://jsoup.org/
 
+### Dart
+
+* html5lib.dart
+  https://github.com/dart-lang/html5lib
+  Written on pure dart port of python's html5lib.py
+
 
 Preparation
 -----------
@@ -125,17 +131,25 @@ To run tests only for some of the platforms, define PLATFORMS envifonment variab
 
     PLATFORMS="pypy python" ./run.sh 5000
 
+To run series of tests use snippets like
+
+    for C in $(echo "10 50 100 400 600 1000"); do ./run.sh $C | tee output_$C.txt; done
+
 Results
 -------
 
 To convert results to CSV file, use `to_csv.py`
 
-    ./run.sh 5000 2>&1 | ./to_csv.py
+    ./run.sh 5000 | ./to_csv.py
 
 or smth like
 
-    ./run.sh 2>&1 | tee output.txt
+    ./run.sh 5000 | tee output.txt
     ./to_csv.py < output.txt
+
+or, for series
+
+    for C in $(echo "10 50 100 400 600 1000"); do ./to_csv.py < output_$C.txt > results-$C.csv; done
 
 There is also R - script that can build some pretty graphs: `stats/main.r`.
 
