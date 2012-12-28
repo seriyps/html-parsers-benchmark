@@ -77,15 +77,28 @@ Competitors
 * fast-tagsoup
   http://hackage.haskell.org/package/fast-tagsoup
 
+### Java
+
+* JSoup http://jsoup.org/
+
+
 Preparation
 -----------
 
 Install OS dependencies python-virtualenv, erlang, pypy, C compiler and libxml2
 dev packages
 
-    sudo apt-get install python-virtualenv python-lxml erlang-base pypy \
-        libxml2-dev libxslt1-dev build-essential nodejs npm cabal-install libicu-dev \
-        php5-cli php5-tidy golang ruby1.9.1 ruby1.9.1-dev rubygems1.9.1
+    sudo apt-get install ...
+        libxml2-dev libxslt1-dev build-essential  # common
+        python-virtualenv python-lxml             # python
+        erlang-base                               # erlang
+        pypy                                      # python PyPy
+        nodejs npm                                # NodeJS
+        cabal-install libicu-dev                  # Haskell
+        php5-cli php5-tidy                        # PHP
+        golang                                    # Go
+        ruby1.9.1 ruby1.9.1-dev rubygems1.9.1     # Ruby
+        maven2 default-jdk                        # Javs
 
 Then run (it will prepare virtual environments, fetch dependencies, compile sources etc)
 

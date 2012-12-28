@@ -7,3 +7,4 @@ ruby
 golang
 php-tidy
 haskell
+java
