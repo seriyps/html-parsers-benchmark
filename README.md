@@ -93,6 +93,10 @@ Competitors
   https://github.com/dart-lang/html5lib
   Written on pure dart port of python's html5lib.py
 
+### Mono
+
+* Html Agility Pack http://htmlagilitypack.codeplex.com
+* SGMLReader https://github.com/MindTouch/SGMLReader
 
 Preparation
 -----------
@@ -110,7 +114,8 @@ dev packages
         php5-cli php5-tidy                        # PHP
         golang                                    # Go
         ruby1.9.1 ruby1.9.1-dev rubygems1.9.1     # Ruby
-        maven2 default-jdk                        # Javs
+        maven2 default-jdk                        # Java
+        mono-runtime mono-dmcs                    # Mono
 
 Then run (it will prepare virtual environments, fetch dependencies, compile sources etc)
 
