@@ -1,3 +1,3 @@
 #!/bin/bash
 
-gem install nokogiri
+sudo gem install nokogiri

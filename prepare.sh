@@ -2,7 +2,13 @@
 source ./lib.sh
 
 for tst in $PLATFORMS; do
-    cd $tst
-    ./prepare.sh
-    cd ../
+    if [ -d $tst ]; then
+        echo "==============="
+        echo $tst;
+        echo "==============="
+
+        cd $tst
+        ./prepare.sh
+        cd ../
+    fi
 done

@@ -57,6 +57,12 @@ Competitors
   http://xmlsoft.org/html/libxml-HTMLparser.html
   Written on C non-strict HTML parser.
 
+### Perl
+
+* Mojo::DOM
+  http://search.cpan.org/~sri/Mojolicious-3.70/lib/Mojo/DOM.pm
+  Written on Perl DOM parser, part of Mojolicious framework
+
 ### Google Go
 
 * gokogiri
