@@ -24,6 +24,7 @@ class BenchSgmlReader {
 		for (int i = 0; i < n; i++) {
 			SgmlReader sgmlReader = new SgmlReader();
 			sgmlReader.DocType = "HTML";
+            sgmlReader.IgnoreDtd = true;
 			sgmlReader.WhitespaceHandling = WhitespaceHandling.All;
 			//sgmlReader.CaseFolding = Sgml.CaseFolding.ToLower;
 			sgmlReader.InputStream = new StringReader(text);
