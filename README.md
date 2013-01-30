@@ -26,7 +26,7 @@ Competitors
 * html5lib
   http://code.google.com/p/html5lib/
   Pure python DOM parser oriented to HTML5.
-* scrapy
+* Scrapy
   http://scrapy.org/
   High-level screen scraping and web crawling framework.
 
