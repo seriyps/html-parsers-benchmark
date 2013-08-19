@@ -1,7 +1,7 @@
 #!/usr/bin/env escript
 %% -*- erlang -*-
 %%! -smp enable -pa deps/mochiweb/ebin
--module(parser).
+-module(mochiweb_parser).
 -mode(compile).
 
 -export([main/1, do_parse_test/2]).
