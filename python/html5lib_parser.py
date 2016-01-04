@@ -19,7 +19,7 @@ def do_parse_test(html, n):
     start = time.time()
     for i in xrange(n):
         tree = html5lib.parse(html)
-        tree.name
+        len(tree)
     stop = time.time()
     print stop - start, "s"
 
