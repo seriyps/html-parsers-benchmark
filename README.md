@@ -26,6 +26,9 @@ Competitors
 * html5lib
   http://code.google.com/p/html5lib/
   Pure python DOM parser oriented to HTML5.
+* Scrapy
+  http://scrapy.org/
+  High-level screen scraping and web crawling framework.
 
 ### PyPi
 
@@ -105,17 +108,17 @@ Install OS dependencies python-virtualenv, erlang, pypy, C compiler and libxml2
 dev packages
 
     sudo apt-get install ...
-        libxml2-dev libxslt1-dev build-essential  # common
-        python-virtualenv python-lxml             # python
-        erlang-base                               # erlang
-        pypy                                      # python PyPy
-        nodejs npm                                # NodeJS
-        cabal-install libicu-dev                  # Haskell
-        php5-cli php5-tidy                        # PHP
-        golang                                    # Go
-        ruby1.9.1 ruby1.9.1-dev rubygems1.9.1     # Ruby
-        maven2 default-jdk                        # Java
-        mono-runtime mono-dmcs                    # Mono
+        libxml2-dev libxslt1-dev build-essential               # common
+        python-virtualenv python-lxml python-scrapy            # python
+        erlang-base                                            # erlang
+        pypy                                                   # python PyPy
+        nodejs npm                                             # NodeJS
+        cabal-install libicu-dev                               # Haskell
+        php5-cli php5-tidy                                     # PHP
+        golang                                                 # Go
+        ruby1.9.1 ruby1.9.1-dev rubygems1.9.1                  # Ruby
+        maven2 default-jdk                                     # Java
+        mono-runtime mono-dmcs                                 # Mono
 
 Then run (it will prepare virtual environments, fetch dependencies, compile sources etc)
 
